@@ -2,20 +2,15 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: kaniko
-  namespace: web
-#  annotations:
-#    fluxcd.io/automated: "true"
 spec:
   template:
     spec:
       containers:
       - name: kaniko
         image: gcr.io/kaniko-project/executor:latest
-        args: ["--context=git://6773bc91b2f3716688202544a3b3e94139fad8ba@github.com:btwseeu78/demologinapp.git#refs/heads/master",
-               "--destination=linuxarpan/kanikotesting:v1",
-               "--verbosity=debug",
-               "--dockerfile=./Dockerfile",
-               "--cache=false"]
+        args: ["--dockerfile=Dockerfile",
+               "--context=git://github.com/bharatmicrosystems/kubernetes-kaniko-nginx.git#refs/heads/master",
+               "--destination=bharamicrosystems/nginx:v3"]
         volumeMounts:
         - name: kaniko-secret
           mountPath: "/kaniko/.docker"
