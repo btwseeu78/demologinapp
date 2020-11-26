@@ -79,7 +79,7 @@ app.post('/reg', function(request, response) {
 
 app.get('/home', function(request, response) {
 	if (request.session.loggedin) {
-		response.send('Welcome back, ' + request.session.username + '!');
+		response.send('Welcome back, v3 ' + request.session.username + '!');
 	} else {
 		response.send('Please login to view this page!');
 	}
