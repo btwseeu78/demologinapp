@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
       - name: loginapp
-        image: linuxarpan/kanikotesting:v2
+        image: linuxarpan/kanikotesting:v3
         ports:
         - containerPort: 3000
