@@ -1,24 +1,23 @@
 ---
-    apiVersion: apps/v1
-    kind: Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-deployment
+  namespace: default
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  selector:
+    matchLabels:
+      app: loginapp
+  replicas: 2
+  template:
     metadata:
-      name: login-deployment
-      namespace: default
-      annotations:
-        fluxcd.io/automated: "true"
+      labels:
+        app: loginapp
     spec:
-      selector:
-        matchLabels:
-          app: loginapp
-      replicas: 2
-      template:
-        metadata:
-          labels:
-            app: loginapp
-        spec:
-          containers:
-          - name: loginapp
-            image: linuxarpan/kanikotesting:v2
-            ports:
-            - containerPort: 3000
-...
+      containers:
+      - name: loginapp
+        image: linuxarpan/kanikotesting:v2
+        ports:
+        - containerPort: 3000
