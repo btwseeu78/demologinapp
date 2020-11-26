@@ -3,18 +3,18 @@ kind: Job
 metadata:
   name: kaniko
   namespace: web
-#  annotations:
-#    fluxcd.io/automated: "true"
+  annotations:
+    fluxcd.io/automated: "false"
 spec:
   template:
     spec:
       containers:
       - name: kaniko
         image: gcr.io/kaniko-project/executor:latest
-        args: ["--context=git://6773bc91b2f3716688202544a3b3e94139fad8ba@github.com/btwseeu78/demologinapp.git",
+        args: ["--context=git://b1da614054b76ec73f12ee84431b4cc40966de20@github.com/btwseeu78/demologinapp.git#refs/heads/master",
                "--destination=linuxarpan/kanikotesting:v2",
                "--verbosity=debug",
-               "--dockerfile=./Dockerfile",
+               "--dockerfile=Dockerfile",
                "--cache=false"]
         volumeMounts:
         - name: kaniko-secret
