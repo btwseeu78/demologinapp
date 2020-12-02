@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loginapp-service
+spec:
+  selector:
+    app: login-deployment
+  ports:
+    - port: 80
+      name: login-app-port
+      protocol: TCP
+      targetPort: 3000
